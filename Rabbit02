@@ -1,0 +1,73 @@
+from elicerabbits import *
+import time as _time
+create_world(5, 5)
+rabbit = Rabbit()
+rabbit.set_trace('blue')
+rabbit.set_pause(1)
+_time.sleep(1)
+
+[미션]
+토끼가 좌회전과 우회전을 번갈아 가면서 지그재그로 이동하도록 해 봅시다.
+이동한 후에 반드시 오른쪽을 바라보도록 해 주세요.  
+
+def turn_right():
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.turn_left()
+
+def zigzag():
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.move()
+    turn_right()
+    
+zigzag()
+
+미션
+전진과 좌회전, 우회전을 이용해 경유점 (2, 2), (3, 3), (4, 4)를 지나 목표점인 (5, 5)에 도달해봅시다.
+
+from elicerabbits import *
+import time as _time
+create_world(5, 5)
+rabbit = Rabbit()
+rabbit.set_trace('blue')
+rabbit.set_pause(0.2)
+_time.sleep(0.2)
+
+def zigzag():
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.move()
+
+zigzag()
+zigzag()
+rabbit.turn_left()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+rabbit.turn_left()
