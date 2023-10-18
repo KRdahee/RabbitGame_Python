@@ -1,0 +1,121 @@
+반복해서 당근 뽑기 II
+반복을 이용해서 토끼를 움직이고, 당근을 뽑아봅시다.
+
+단! 이번에는 토끼가 있는 곳의 크기를 모릅니다. 좁을 수도 있고, 넓을 수도 있어요.
+
+그렇다면 크기에 관계없이 동작하는 코드를 작성해야겠죠?
+
+rabbit.front_is_clear(): 토끼의 정면이 벽으로 막혀있지 않으면 True, 막혀있으면 False를 리턴합니다.
+
+[미션]
+토끼를 다음 그림과 같이 움직여봅시다.
+
+Tip!
+‘반복’을 정해진 특정 횟수가 아닌 원하는 조건이 만족되는 동안 계속 반복할 수도 있습니다.
+
+Python에서는, 조건이 True인 동안 반복하기 위해서 다음과 같은 코드를 사용합니다.
+
+while 반복하는 조건:
+    '반복할 행동 1'
+    '반복할 행동 2'
+    ....
+
+# 토끼와 엘리스월드를 불러올 모듈을 호출합니다.
+from elicerabbits import *
+from time import *
+
+# 토끼와 엘리스월드를 소환합니다!
+load_world("worlds/harvest1.wld")
+rabbit = Rabbit()
+rabbit.set_pause(0.2)
+# 토끼의 경로를 파란색으로 표시합니다.
+rabbit.set_trace('blue')
+
+# 토끼가 당근을 모두 수확할 수 있도록 아래 코드를 작성해주세요!
+for i in range(4):
+    rabbit.move()
+    
+    while rabbit.front_is_clear() : 
+        rabbit.move()
+    rabbit.pick_carrot()
+    rabbit.turn_left()
+
+[미션]
+토끼가 아래의 토끼굴에서 지상으로 나가고 싶어하네요! 뚫려있는 구멍을 찾아서 토끼굴 밖으로 두 걸음 나가게 해주세요!
+
+from elicerabbits import *
+import time as _time
+load_world("worlds/LeaveHouse2.wlr")
+rabbit = Rabbit(carrots = 1)
+rabbit.set_trace('red')
+rabbit.set_pause(0.5)
+_time.sleep(0.5)
+
+def turn_right(): #함수 선언했음 
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.turn_left()
+
+rabbit.turn_left()
+while not rabbit.front_is_clear():
+    turn_right() #여기서 한번 쓰면 좌측으로 3번돌아서 제자리 
+    rabbit.move()
+    rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+
+[미션] 돌아오기
+
+토끼가 어느 곳에 있든 토끼가 (1, 1)로 이동해서 동쪽을 바라보도록 하는 함수를 작성해보아요.
+
+rabbit.facing_north(): 토끼가 북쪽을 바라보면 True, 그렇지 않으면 False를 리턴합니다.
+
+rabbit.front_is_clear(): 토끼의 정면이 벽으로 막혀있지 않으면 True, 막혀있으면 False를 리턴합니다.
+
+1) create_world(...) 함수의 avenues와 streets 값을 변경하여 다양한 크기의 엘리스월드를 만들어보세요.
+
+2) Rabbit(...) 함수의 orientation, avenue, street 값을 조정하여 토끼의 방향과 위치를 변경해보세요.
+
+3) rabbit 매개변수를 받아 토끼가 시작점으로 돌아오도록 하는 _return(rabbit) 함수를 작성해주세요.
+
+4) 2, 3번째 줄과 _return(rabbit) 함수를 제외한 코드를 모두 주석 처리한 후 「제출」 버튼을 눌러보세요.
+
+Tip!
+제출하면, 엘리스가 자동으로 월드를 생성하고, 토끼를 추가하고, 토끼의 시작점을 임의로 설정해드려요.
+
+# 토끼와 당근밭을 불러올 모듈을 호출합니다.
+from elicerabbits import *
+from time import *
+
+# 가로 10, 세로 10의 당근밭을 소환합니다.
+# 제출할 때는 아래 한 줄을 주석 처리해주세요.
+create_world(avenues = 10, streets = 10)
+
+# 7행, 5열에서 동쪽을 바라보고 있는 토끼를 소환합니다. 
+# 제출할 때는 아래 두 줄을 주석 처리해주세요
+rabbit = Rabbit(orientation = "E", avenue = 7, street = 5)
+rabbit.set_trace("blue")
+
+# 토끼가 1, 1 지점으로 돌아오게 만드는 _return(rabbit) 함수를 작성하세요.
+# 2, 3번째 줄과 return(rabbit)을 정의하는 코드블럭을 제외한 모든 코드를 주석처리한 후 제출하세요.
+def _return(rabbit):
+    # 북쪽을 보지 않는다면 계속 왼쪽으로 회전합니다
+    while not rabbit.facing_north() :  
+        rabbit.turn_left()  
+    # 서쪽으로 회전합니다
+    rabbit.turn_left()
+    # 앞이 비었다면 계속 앞으로 갑니다
+    while rabbit.front_is_clear():
+        rabbit.move()
+    # 남쪽으로 회전합니다
+    rabbit.turn_left()
+    # 앞이 비었다면 계속 앞으로 갑니다
+    while rabbit.front_is_clear():
+        rabbit.move()
+        
+    # 오른쪽으로 회전합니다
+    rabbit.turn_left()
+
+# _return 함수를 호출합니다.
+# 제출할 때는 아래 한 줄을 주석 처리해주세요 
+_return(rabbit)
