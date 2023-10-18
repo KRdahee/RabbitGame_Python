@@ -1,0 +1,38 @@
+from elicerabbits import *
+import time as _time
+create_world(5, 5)
+rabbit = Rabbit()
+rabbit.set_trace('blue')
+rabbit.set_pause(1)
+_time.sleep(1)
+
+rabbit.move
+
+1칸 앞으로 전진.
+
+rabbit.move
+rabbit.move
+rabbit.move
+
+3칸 앞으로 전진.
+
+rabbit.move()
+rabbit.turn_left()
+rabbit.move()
+
+1칸 전진, 좌측으로 돌기.
+
+rabbit.move()
+rabbit.turn_left()
+rabbit.turn_left()
+rabbit.turn_left()
+rabbit.move()
+
+1칸 전진, 좌측으로 3번 돌기(제자리 회전)
+
+rabbit.move()
+rabbit.turn_left()
+rabbit.turn_left()
+rabbit.move()
+
+앞으로 갔다가 뒤로 돌아 다시 있던 자리로 돌아오기.
