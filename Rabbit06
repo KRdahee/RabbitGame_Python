@@ -117,5 +117,5 @@ def _return(rabbit):
     rabbit.turn_left()
 
 # _return 함수를 호출합니다.
-# 제출할 때는 아래 한 줄을 주석 처리해주세요 
+
 _return(rabbit)
