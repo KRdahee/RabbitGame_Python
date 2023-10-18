@@ -159,3 +159,51 @@ def turn_right():
 rabbit.move()
 turn_right()
 
+[미션] 당근 찾아 가져오기
+세 귀퉁이 중 한 곳에만 있는 당근을 찾아 왼쪽 아래로 가져와 심어줍시다.
+채점 중에는 세 귀퉁이 중 어디에 심어질 지 알 수 없어서 모두 검사해야 합니다. 월드맵의 크기는 동일합니다.
+
+앞으로 한 칸 가기: rabbit.move()
+
+좌회전: rabbit.turn_left()
+
+당근 뽑기: rabbit.pick_carrot()
+
+당근 심기: rabbit.drop_carrot()
+
+토끼가 당근 위에 있는지 확인하기: rabbit.on_carrot() (당근 위에 있을 경우 True를 반환합니다)
+
+Tip!
+‘조건문’은 조건의 결과가 True라면 실행하고, False라면 넘어가는 것을 말합니다. 조건은 다음과 같은 방법으로 할 수 있습니다.
+
+if 조건:
+    실행 1
+    실행 2
+
+# 토끼와 엘리스월드를 불러올 모듈을 호출합니다.
+from elicerabbits import *
+from time import *
+
+# 토끼와 엘리스월드를 소환합니다!
+# 주석의 위치를 바꿔가며 다른 월드로도 실행해 보세요!
+load_world("worlds/Move1.wld")
+#load_world("worlds/Move2.wld")
+#load_world("worlds/Move3.wld")
+rabbit = Rabbit()
+rabbit.set_pause(0.2)
+# 토끼의 경로를 파란색으로 표시합니다.
+rabbit.set_trace('blue')
+
+# 토끼가 미션을 수행할 수 있도록 아래 코드를 작성해주세요!
+for i in range(4):
+    rabbit.move()
+    rabbit.move()
+    rabbit.move()
+    rabbit.move()
+
+    rabbit.turn_left()
+
+    if rabbit.on_carrot():
+        rabbit.pick_carrot()
+
+rabbit.drop_carrot()
