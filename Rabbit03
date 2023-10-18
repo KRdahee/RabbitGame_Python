@@ -1,0 +1,82 @@
+[미션]
+토끼 앞에 당근이 하나 있네요! 토끼를 한 칸 앞으로 움직인 후, 당근을 뽑아봅시다.
+
+# 토끼와 엘리스월드를 불러올 모듈을 호출합니다.
+from elicerabbits import *
+
+# 토끼와 엘리스월드를 소환합니다!
+load_world("worlds/harvest1.wld")
+rabbit = Rabbit()
+
+# 토끼의 경로를 파란색으로 표시합니다.
+rabbit.set_trace('blue')
+
+# 토끼가 당근을 수확할 수 있도록 아래 코드를 작성해주세요!
+rabbit.move()
+rabbit.pick_carrot()
+
+[미션]
+이번에는 방금 뽑은 당근을 중앙에 옮겨 심어봅시다.
+
+# 토끼와 엘리스월드를 불러올 모듈을 호출합니다.
+from elicerabbits import *
+
+# 토끼와 엘리스월드를 소환합니다!
+load_world("worlds/plant.wld")
+rabbit = Rabbit(carrots = 1, avenue=2, street=1)
+rabbit.set_pause(0.5)
+# 토끼의 경로를 파란색으로 표시합니다.
+rabbit.set_trace('blue')
+
+# 토끼가 당근을 심을 수 있도록 아래 코드를 작성해주세요!
+rabbit.turn_left()
+rabbit.move()
+rabbit.move()
+rabbit.turn_left()
+rabbit.turn_left()
+rabbit.turn_left()
+rabbit.move()
+rabbit.drop_carrot()
+rabbit.move()
+
+[미션]
+중앙에 있는 당근을 뽑아서 오른쪽 위에 있는 곳으로 옮겨 심어 봅시다!
+
+# 이상한 나라를 구현하기 위한 코드입니다. 수정하지 마세요! (토끼가 다쳐요 ㅠㅠ).
+from elicerabbits import *
+import time as _time
+load_world("worlds/Move.wld")
+rabbit = Rabbit()
+rabbit.set_trace('blue')
+rabbit.set_pause(0.2)
+_time.sleep(0.2)
+
+# 아래에 코드를 작성해 볼까요?
+def zigzag():
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.move()
+    rabbit.pick_carrot()
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.turn_left()
+    rabbit.move()
+    rabbit.turn_left()
+    rabbit.move()
+    rabbit.drop_carrot()
+
+zigzag()
+
+# 문제를 해결한 후, 화면 아래에 있는 '다음' 버튼을 눌러 다음 문제로 이동해봅시다. 
